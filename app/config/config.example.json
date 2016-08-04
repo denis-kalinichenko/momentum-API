@@ -1,0 +1,9 @@
+{
+  "domain": "localhost",
+  "protocol": "http",
+  "port": 80,
+  "mongoose": {
+    "uri": "mongodb://localhost/momentum"
+  },
+  "secret": "superSecretSecretKey"
+}

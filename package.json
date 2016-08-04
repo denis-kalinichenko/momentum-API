@@ -1,0 +1,31 @@
+{
+  "name": "momentum-api",
+  "version": "0.0.1",
+  "description": "RESTful API of self-learning Smart Time Management App with Neural network on JavaScript, Node.JS, Express, Passport.js.",
+  "main": "api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/denis-kalinichenko/momentum-API.git"
+  },
+  "keywords": [
+    "API",
+    "momentum",
+    "neural",
+    "network"
+  ],
+  "author": "Denys Kalinichenko <d.kalinichenkooo@gmail.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/denis-kalinichenko/momentum-API/issues"
+  },
+  "homepage": "https://github.com/denis-kalinichenko/momentum-API#readme",
+  "dependencies": {
+    "body-parser": "~1.15.2",
+    "express": "~4.14.0",
+    "mongoose": "~4.5.8",
+    "nconf": "^0.8.4"
+  }
+}
