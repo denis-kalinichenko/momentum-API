@@ -10,6 +10,7 @@ router.route('/tasks')
     .post(function (req, res) {
         var task = new Task();
         task.name = req.body.name;
+        task.priority = req.body.priority;
 
         task.save(function (err) {
             if (err)
