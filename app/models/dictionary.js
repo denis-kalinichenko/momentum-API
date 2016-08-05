@@ -13,7 +13,7 @@ var WordSchema = new Schema({
         trim: true,
         stripHtmlTags: true,
         required: true,
-        index: { unique: true },
+        unique: true,
         dropDups: true
     },
     pos: {
