@@ -48,31 +48,22 @@ TaskSchema.virtual("keywords").get(function () {
     this.tags.forEach(function (tag, index, array) {
         if (tag[1] === "NN" || tag[1] === "VB" || tag[1] === "NNP") {
             keywords.push(tag);
+            var word = new Word();
+            word.name = tag[0];
+            word.pos = tag[1];
+
+            word.save(function (err, obj) {
+                if(err && err.code === 11000) {
+
+                }
+                tag.push(obj.id);
+            });
         }
     });
     return keywords;
 });
 
-TaskSchema.methods.saveKeywords = function (cb) {
-    this.keywords.forEach(function (keyword, index, array) {
-        var word = new Word();
-        word.name = keyword[0];
-        word.pos = keyword[1];
-
-        word.save(function (err) {
-            if (err && err.code != 11000) {
-                return cb(err);
-            }
-        });
-    });
-    cb(null, true);
-};
-
 TaskSchema.methods.checkPriority = function (cb) {
-    this.saveKeywords(function (err, cb) {
-        if (err)
-            return cb(err);
-    });
 
     // TODO get data from neural network
 
@@ -80,10 +71,6 @@ TaskSchema.methods.checkPriority = function (cb) {
 };
 
 TaskSchema.pre("save", function (cb) {
-    this.saveKeywords(function (err, cb) {
-        if (err)
-            return cb(err);
-    });
 
     cb();
 });

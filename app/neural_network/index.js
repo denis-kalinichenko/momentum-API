@@ -3,26 +3,21 @@
  */
 
 var brain = require("brain.js");
-var net = new brain.NeuralNetwork({hiddenLayers: [4]});
+var net = new brain.NeuralNetwork();
 
-// 1 - prepare
-// 2 - go
-// 3 - do
-// 4 - exam
-// 5 - party
-// 6 -  homework
-// 7 - school
-
-var data = [
-    {input: [1, 4], output: { low: 0, medium: 0, high: 1 }},
-    {input: [1, 4], output: { low: 0, medium: 0, high: 1 }},
-    {input: [2, 5], output: { low: 1, medium: 0, high: 0 }},
-    {input: [3, 6], output: { low: 0, medium: 1, high: 0 }},
-    {input: [2, 7], output: { low: 0, medium: 0, high: 1 }}
-];
-
-net.train(data, {
-    log: true
+var trainStream = net.createTrainStream({
+    doneTrainingCallback: function (obj) {
+        console.log('trained in ' + obj.iterations + ' iterations with error: '
+            + obj.error);
+    }
 });
 
-console.log(net.run([1, 4]));
+module.exports = {
+    trainNetwork: function (data) {
+        for (var i = 0; i < data.length; i++) {
+            trainStream.write(data[i]);
+        }
+        // let it know we've reached the end of the data
+        trainStream.write(null);
+    }
+};
