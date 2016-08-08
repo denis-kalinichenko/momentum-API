@@ -17,7 +17,6 @@ module.exports = {
         for (var i = 0; i < data.length; i++) {
             trainStream.write(data[i]);
         }
-        // let it know we've reached the end of the data
-        trainStream.write(null);
-    }
+    },
+    net: net
 };

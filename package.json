@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/denis-kalinichenko/momentum-API#readme",
   "dependencies": {
+    "async": "^2.0.1",
     "body-parser": "~1.15.2",
     "brain.js": "~0.7.0",
     "express": "~4.14.0",
